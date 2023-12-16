@@ -21,9 +21,12 @@ docker buildx create --name mybuilder --use
 # Start up the Builder:
 docker buildx inspect --bootstrap
 
-# You can now use the builder to build multi-arch images:
-invoke build 6.2
-invoke push 6.2
+# docker login
+
+docker login
+
+# You can now use the builder to build and publisj multi-arch images:
+invoke build 6.2 
 
 # list all the builders
 docker buildx ls

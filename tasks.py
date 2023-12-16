@@ -72,9 +72,8 @@ def _docker_build(config):
     """
     c, version = config
     print(f" -- Starting docker build for version : {version}")
-    build_command = f"docker buildx build --platform linux/amd64,linux/arm64 --build-arg redis_version={version} -t jameszheng194/redis-cluster:{version} ."
+    build_command = f"docker buildx build --platform linux/amd64,linux/arm64 --build-arg redis_version={version} -t jameszheng194/redis-cluster:{version} --push ."
     c.run(build_command)
-
 
 def _docker_push(config):
     """
