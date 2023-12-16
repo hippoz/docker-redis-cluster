@@ -15,9 +15,10 @@ version_config_mapping += [f"4.0.{i}" for i in range(0, 15)]
 version_config_mapping += [f"5.0.{i}" for i in range(0, 13)]
 
 # Published versions
-version_config_mapping += [f"6.0.{i}" for i in range(0, 19)]
-version_config_mapping += [f"6.2.{i}" for i in range(0, 12)]
-version_config_mapping += [f"7.0.{i}" for i in range(0, 11)]
+version_config_mapping += [f"6.0.{i}" for i in range(0, 20)]
+version_config_mapping += [f"6.2.{i}" for i in range(0, 13)]
+version_config_mapping += [f"7.0.{i}" for i in range(0, 14)]
+version_config_mapping += [f"7.2.{i}" for i in range(0, 3)]
 
 
 def version_name_to_version(version):
