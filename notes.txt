@@ -1,0 +1,10 @@
+
+#On Mac
+
+uname -m ==> get the chip info
+
+invoke build 6.2
+docker tag grokzen/redis-cluster:6.2.11 jameszheng194/redis-cluster:6.2.11-arm64
+docker push jameszheng194/redis-cluster:6.2.11-arm64
+
+

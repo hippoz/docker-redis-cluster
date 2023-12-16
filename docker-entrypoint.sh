@@ -43,18 +43,22 @@ if [ "$1" = 'redis-cluster' ]; then
       mkdir -p /redis-conf/${port}
       mkdir -p /redis-data/${port}
 
-#       if [ -e /redis-data/${port}/nodes.conf ]; then
-#         rm /redis-data/${port}/nodes.conf
-#       fi
-#
-#       if [ -e /redis-data/${port}/dump.rdb ]; then
-#         rm /redis-data/${port}/dump.rdb
-#       fi
-#
-#       if [ -e /redis-data/${port}/appendonly.aof ]; then
-#         rm /redis-data/${port}/appendonly.aof
-#       fi
+      if [ "$RETAIN_DATA" = "true" ]; then
+        echo "RETAIN_DATA is set to true, retaining data for port $port"
+      else
+        echo "RETAIN_DATA is set to false, deleting data for port $port"
+        if [ -e /redis-data/${port}/nodes.conf ]; then
+          rm /redis-data/${port}/nodes.conf
+        fi
 
+        if [ -e /redis-data/${port}/dump.rdb ]; then
+          rm /redis-data/${port}/dump.rdb
+        fi
+
+        if [ -e /redis-data/${port}/appendonly.aof ]; then
+          rm /redis-data/${port}/appendonly.aof
+        fi
+      fi
       if [ "$port" -lt "$first_standalone" ]; then
         PORT=${port} BIND_ADDRESS=${BIND_ADDRESS} envsubst < /redis-conf/redis-cluster.tmpl > /redis-conf/${port}/redis.conf
         nodes="$nodes $IP:$port"
