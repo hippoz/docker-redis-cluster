@@ -27,6 +27,8 @@ docker login
 
 # You can now use the builder to build and publisj multi-arch images:
 invoke build 6.2.11
+# or if you want to build or 6.2.x
+invoke build 6.2 
 
 # list all the builders
 docker buildx ls
