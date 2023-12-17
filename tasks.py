@@ -5,6 +5,8 @@ from multiprocessing import Pool
 from invoke import task
 
 
+versions_pending = ["7.2.3", "7.0.14", "6.2.14"]
+
 latest_version_string = "7.2.3"
 
 # Unpublished versions
@@ -34,7 +36,7 @@ def version_name_to_version(version):
     elif version == "latest":
         return [latest_version_string]
     elif version == "pending":
-        return ["7.2.3", "7.0.14", "6.2.14"]
+        return versions_pending
     else:
         return filter_versions(version)
 
