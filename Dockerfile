@@ -21,7 +21,7 @@ ENV LC_ALL     en_US.UTF-8
 # Necessary for gem installs due to SHA1 being weak and old cert being revoked
 ENV SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 
-RUN gem install redis -v 4.1.3
+RUN gem install redis -v 5.0.8
 
 # This will always build the latest release/commit in the 6.0 branch
 ARG redis_version=7.0
