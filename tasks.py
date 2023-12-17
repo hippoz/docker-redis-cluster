@@ -33,6 +33,8 @@ def version_name_to_version(version):
         return version_config_mapping
     elif version == "latest":
         return [latest_version_string]
+    elif version == "pending":
+        return ["7.2.3", "7.0.14", "6.2.14"]
     else:
         return filter_versions(version)
 
