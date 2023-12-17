@@ -10,7 +10,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # Install system dependencies
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -yqq \
-      net-tools supervisor ruby rubygems locales gettext-base wget gcc make g++ build-essential libc6-dev tcl && \
+      net-tools supervisor ruby rubygems locales libjemalloc-dev gettext-base wget gcc make g++ build-essential libc6-dev tcl && \
     apt-get clean -yqq
 
 # # Ensure UTF-8 lang and locale
@@ -23,8 +23,8 @@ ENV SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
 
 # RUN gem install redis -v 5.0.8
 
-# This will always build the latest release/commit in the 6.0 branch
-ARG redis_version=7.0
+# This will always build the latest release/commit in the 7.2 branch(by default)
+ARG redis_version=7.2
 
 RUN wget -qO redis.tar.gz https://github.com/redis/redis/tarball/${redis_version} \
     && tar xfz redis.tar.gz -C / \
@@ -34,9 +34,10 @@ RUN (cd /redis && make)
 
 RUN mkdir /redis-conf && mkdir /redis-data
 
-RUN (cd /usr/local/bin && rm -f redis-cli || echo "redis-cli not found")
-
-RUN (cd /usr/local/bin && ln -s /redis/src/redis-cli)
+RUN (cd /usr/local/bin && \
+    (rm -f redis-cli || echo "redis-cli not found") \
+    ln -s /redis/src/redis-cli \
+)
 
 COPY redis-cluster.tmpl /redis-conf/redis-cluster.tmpl
 COPY redis.tmpl         /redis-conf/redis.tmpl
