@@ -34,10 +34,9 @@ RUN (cd /redis && make)
 
 RUN mkdir /redis-conf && mkdir /redis-data
 
-RUN (cd /usr/local/bin && \
-    (rm -f redis-cli || echo "redis-cli not found") \
-    ln -s /redis/src/redis-cli \
-)
+RUN cd /usr/local/bin && \
+    (rm -f redis-cli || echo "redis-cli not found") && \
+    ln -s /redis/src/redis-cli redis-cli
 
 COPY redis-cluster.tmpl /redis-conf/redis-cluster.tmpl
 COPY redis.tmpl         /redis-conf/redis.tmpl
