@@ -30,12 +30,8 @@ invoke build 6.2.11
 # or if you want to build or 6.2.x
 invoke build 6.2 
 
-# pending
-invoke build 6.0.20
-invoke build 6.2.13
-invoke build 7.0.13
-invoke build 7.0.14
-invoke build 7.2
+# pending (edit tasks.py)
+invoke build pending
 
 
 # list all the builders
