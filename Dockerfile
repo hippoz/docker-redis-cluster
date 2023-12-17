@@ -17,15 +17,10 @@ RUN echo en_US.UTF-8 UTF-8 > /etc/locale.gen && locale-gen en_US.UTF-8
 ENV LANG       en_US.UTF-8
 ENV LC_ALL     en_US.UTF-8
 
-# Necessary for gem installs due to SHA1 being weak and old cert being revoked
-ENV SSL_CERT_FILE=/usr/local/etc/openssl/cert.pem
-
-# RUN gem install redis -v 5.0.8
-
 # This will always build the latest release/commit in the 7.2 branch(by default)
 ARG redis_version=7.2
 
-RUN wget -qO redis.tar.gz https://github.com/redis/redis/tarball/${redis_version} \
+RUN wget --no-check-certificate -qO redis.tar.gz https://github.com/redis/redis/tarball/${redis_version} \
     && tar xfz redis.tar.gz -C / \
     && mv /redis-* /redis
 
