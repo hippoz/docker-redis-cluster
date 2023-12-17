@@ -7,7 +7,7 @@ ENV HOME /root
 ENV DEBIAN_FRONTEND noninteractive
 
 # Install system dependencies
-RUN apt-get update -qq && \
+RUN apt-get update -yqq && apt-get upgrade -yqq && \
     apt-get install --no-install-recommends -yqq \
       net-tools supervisor locales gettext-base wget gcc make g++ build-essential libc6-dev tcl && \
     apt-get clean -yqq
