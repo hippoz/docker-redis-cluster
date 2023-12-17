@@ -22,7 +22,8 @@ ARG redis_version=7.2
 
 RUN wget --no-check-certificate -qO redis.tar.gz https://github.com/redis/redis/tarball/${redis_version} \
     && tar xfz redis.tar.gz -C / \
-    && mv /redis-* /redis
+    && mv /redis-* /redis \
+    && rm -rf redis.tar.gz
 
 RUN (cd /redis && make)
 
