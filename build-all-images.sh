@@ -12,6 +12,8 @@ docker login --username jameszheng194
 
 cd docker-redis-cluster
 
+# ubuntu:  sudo apt install python3-invoke
+
 invoke build 7.2
 invoke build 7.0
 invoke build 6.2
