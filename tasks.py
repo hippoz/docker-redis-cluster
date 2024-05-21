@@ -5,9 +5,9 @@ from multiprocessing import Pool
 from invoke import task
 
 
-versions_pending = ["7.2.3", "7.0.14", "6.2.14", "6.0.20", "5.0.14"]
+versions_pending = ["7.2.4", "7.2.5"]
 
-latest_version_string = "7.2.3"
+latest_version_string = "7.2.5"
 
 # Unpublished versions
 version_config_mapping = []
